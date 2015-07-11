@@ -30,7 +30,7 @@
   <%= @store.user %>
 </p> -->
 
-<<<<<<< HEAD
+
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
@@ -58,15 +58,23 @@
   markers = handler.addMarkers(<%=raw @hash.to_json %>);
 </script>
 
+<h2>Promociones</h2>
+<%= render 'offers/form'%>
 
-<h3>Nearby locations</h3>
+
+
+<% @store.offers.each do |p| %>
+ <%= p.name %>
+ <%= p.price %></br>
+<% end %>
+
+<h3>Botillerias cercanas</h3>
 <ul>
 <% for store in @store.nearbys(10) %>
   <li><%= link_to store.address, store %> (<%= store.distance.round(2) %> kilometros)</li>
 <% end %>
 </ul>
 
-=======
->>>>>>> e9254b90473e749530400f5df653ad8c687aca0b
+
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>

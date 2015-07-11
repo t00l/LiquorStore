@@ -21,6 +21,8 @@ class StoresController < InheritedResources::Base
   # GET /Stores/1.json
   def show
 
+      @offer = @store.offers.build
+      @offers = @store.offers.includes(:store).all.reverse 
 
 
       @store = Store.find(params[:id])
@@ -89,12 +91,6 @@ class StoresController < InheritedResources::Base
     def set_store
       @store = Store.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def store_params
-      params.require(:store).permit(:address, :latitude, :longitude)
-    end
-
 
   private
 
