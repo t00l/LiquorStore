@@ -9,13 +9,17 @@ class StoresController < InheritedResources::Base
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
       marker.lat store.latitude
       marker.lng store.longitude
+      marker.infowindow store.schedule
+      marker.picture({"url" => "http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png",
+    "width" => 64 ,
+    "height" => 64})
     end
   end
 
-  # GET /Stores/1
+  # GET /Stores/1http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png
   # GET /Stores/1.json
   def show
-    
+
   end
 
   # GET /Stores/new
