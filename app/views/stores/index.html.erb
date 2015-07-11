@@ -17,11 +17,11 @@
 var handler = Gmaps.build('Google');
 
 handler.buildMap({ internal: {id: 'geolocation'} }, function(){
-<<<<<<< HEAD
+
   
-=======
+
   marker = handler.addMarkers(<%=raw @hash.to_json %>);
->>>>>>> e9254b90473e749530400f5df653ad8c687aca0b
+
   if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(displayOnMap);
   else

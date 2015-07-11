@@ -16,7 +16,7 @@ class StoresController < InheritedResources::Base
   # GET /Stores/1
   # GET /Stores/1.json
   def show
-<<<<<<< HEAD
+
       @store = Store.find(params[:id])
       result = request.location
 
@@ -25,9 +25,7 @@ class StoresController < InheritedResources::Base
       marker.lat stores.latitude
       marker.lng stores.longitude
     end
-=======
     
->>>>>>> e9254b90473e749530400f5df653ad8c687aca0b
   end
 
   # GET /Stores/new
