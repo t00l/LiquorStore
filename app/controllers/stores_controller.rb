@@ -5,24 +5,17 @@ class StoresController < InheritedResources::Base
   # GET /Stores
   # GET /Stores.json
   def index
-    if params[:search].present?
-        @stores = Store.near(params[:search], 50, :order => :distance)
-    else
-        @stores = Store.all
+    @stores = Store.all
+    @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+      marker.lat store.latitude
+      marker.lng store.longitude
     end
   end
 
   # GET /Stores/1
   # GET /Stores/1.json
   def show
-      @store = Store.find(params[:id])
-      @result = request.location
-
-      @stores = Store.near([@store.latitude, @store.longitude], 5)
-      @hash = Gmaps4rails.build_markers(@stores) do |stores, marker|
-      marker.lat stores.latitude
-      marker.lng stores.longitude
-    end
+    
   end
 
   # GET /Stores/new
