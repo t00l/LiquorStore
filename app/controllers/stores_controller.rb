@@ -10,13 +10,14 @@ class StoresController < InheritedResources::Base
     else
         @stores = Store.all
     end
+    
   end
 
   # GET /Stores/1
   # GET /Stores/1.json
   def show
       @store = Store.find(params[:id])
-      @result = request.location
+      result = request.location
 
       @stores = Store.near([@store.latitude, @store.longitude], 5)
       @hash = Gmaps4rails.build_markers(@stores) do |stores, marker|
