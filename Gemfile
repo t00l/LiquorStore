@@ -19,6 +19,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'pry-rails'
 gem 'pg'
+gem 'pg_search'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
