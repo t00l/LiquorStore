@@ -1,20 +1,22 @@
 class OffersController < ApplicationController
 
 	def create
-
+		
 		@store = Store.find(params[:store_id])
 		@offer = @store.offers.build(offer_params)
 
-		respond_to do |format|
-      	if @offer.save
-		        format.html { redirect_to @store, notice: 'Offer was successfully created.' }
-		        format.js
-     		else
-		        format.html { render 'stores/show' }
-		        format.js
-		    end
-  	end
+			respond_to do |format|
+	      	if @offer.save
+			        format.html { redirect_to @store, notice: 'Offer was successfully created.' }
+			        format.js
+	     		else
+			        format.html { render 'stores/show' }
+			        format.js
+			    end
+	  		end
 
+		@offers = @store.offers.all	
+	
 	end
 
 	def destroy	
