@@ -1,5 +1,6 @@
 class Store < ActiveRecord::Base
   include PgSearch
+  extend FriendlyId
 
   pg_search_scope :search_by_name, :against => [:name], :associated_against => {
     :offers => [:name]}, :using => {:tsearch => {:prefix => true}}
@@ -9,5 +10,7 @@ class Store < ActiveRecord::Base
   belongs_to :user
   has_many :offers
   mount_uploader :image, ImageUploader
+
+  friendly_id :name, use: [:slugged, :finders]
 
 end

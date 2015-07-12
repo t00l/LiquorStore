@@ -22,7 +22,7 @@ gem 'gmaps4rails'
 gem 'pry-rails'
 gem 'pg'
 gem 'pg_search'
-
+gem 'friendly_id', '~> 5.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
