@@ -31,7 +31,7 @@ class StoresController < InheritedResources::Base
                         </a>"
                     
 
-      marker.picture({"url" => "http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png",
+      marker.picture({"url" => "http://i57.tinypic.com/68dg0j.png",
                       "width" => 64 ,
                       "height" => 64})
     end
