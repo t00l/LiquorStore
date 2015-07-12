@@ -80,18 +80,26 @@
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
   </script>
 
-  <div class="panel panel-default">
+<div class="panel panel-default">
+  <div class="row">
+      <div class="col-md-6">
+        <h2>Promociones</h2>
+        <%= render 'offers/form'%>
+      </div>
 
-    <h2>Promociones</h2>
-    <%= render 'offers/form'%>
-
-    <br>
-    <% @store.offers.each do |p| %>
-     <%= p.name %>
-     <%= p.price %></br>
-    <% end %>
-
+      <br>
+      <div class="col-md-6">
+        <table class="table">
+        <tr>
+          <% @store.offers.each do |p| %>
+          <th><%= p.name %></th> 
+          <th><%= p.price %></th>
+        </tr>
+        </table>
+      </div>
+      <% end %>
   </div>
+</div>
 
   <h3>Botillerias cercanas</h3>
   <ul>
@@ -99,7 +107,6 @@
     <li><%= link_to store.address, store %> (<%= store.distance.round(2) %> kilometros)</li>
   <% end %>
   </ul>
-
 
   <%= link_to 'Edit', edit_store_path(@store) %> |
   <%= link_to 'Back', stores_path %>
