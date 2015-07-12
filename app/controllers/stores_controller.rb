@@ -5,7 +5,14 @@ class StoresController < InheritedResources::Base
   # GET /Stores
   # GET /Stores.json
   def index
-    @stores = Store.all
+
+    if params.key?(:query) && !params[:query].empty?
+      @stores = Store.search_by_name(params[:query])
+    else
+      @stores = Store.all
+    end
+
+    #@stores = Store.all
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
       marker.lat store.latitude
       marker.lng store.longitude
