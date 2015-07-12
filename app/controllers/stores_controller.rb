@@ -9,32 +9,54 @@ class StoresController < InheritedResources::Base
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
       marker.lat store.latitude
       marker.lng store.longitude
-      marker.infowindow store.schedule
+      marker.infowindow "<a href='#{store_path(store)}'>
+                          <div class='box' style='width:120px;'>
+                            <h2>
+                              <strong>
+                              "+store.name+" 
+                              </strong>
+                            </h2>
+                            <h3>
+                              "+"Atención: "+store.schedule+"
+                            </h3>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/2/21/The_Bunghole_Liquor_Store.jpg' width='111' height='90' class=''>
+                          </div>
+                        </a>"
+                    
+
       marker.picture({"url" => "http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png",
-    "width" => 64 ,
-    "height" => 64})
+                      "width" => 64 ,
+                      "height" => 64})
     end
-    
   end
+
+=begin
+  "<div class='box' style='width:200px;'>
+  <h4>
+  <strong>
+  "+musician.musician_name+", "+musician.instrument.instrument_name+"
+  </strong>
+  </h4>
+  <img src='http://img.youtube.com/vi/"+musician.youtube_video+"/mqdefault.jpg' width='111' height='90' class=''>
+  </div>"
+=end
+
 
   # GET /Stores/1http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png
   # GET /Stores/1.json
   def show
-
-      @offer = @store.offers.build
-      @offers = @store.offers.includes(:store).all.reverse 
-
-
-      @store = Store.find(params[:id])
-      result = request.location
-
-      @stores = Store.near([@store.latitude, @store.longitude], 5)
-      @hash = Gmaps4rails.build_markers(@stores) do |stores, marker|
-      marker.lat stores.latitude
-      marker.lng stores.longitude
-    end
+    @offer = @store.offers.build
+    @offers = @store.offers.includes(:store).all.reverse 
 
 
+    @store = Store.find(params[:id])
+    result = request.location
+
+    @stores = Store.near([@store.latitude, @store.longitude], 5)
+    @hash = Gmaps4rails.build_markers(@stores) do |stores, marker|
+    marker.lat stores.latitude
+    marker.lng stores.longitude
+  end
   end
 
   # GET /Stores/new
@@ -92,10 +114,15 @@ class StoresController < InheritedResources::Base
       @store = Store.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def store_params
+      params.require(:store).permit(:address, :latitude, :longitude)
+    end
+
+
   private
 
     def store_params
       params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id)
     end
 end
-
