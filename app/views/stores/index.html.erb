@@ -1,8 +1,19 @@
-<div class="container-fluid">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%= render 'shared/navbar' %>
   <p id="notice"><%= notice %></p>
 
-  <h1>Botillerias cercanas !</h1>
+
+<div class="jumbotron" style="background-image:url(http://i57.tinypic.com/xpni3q.jpg); background-size: cover; height: 100%;margin-top: -11px;">
+  <h1 style="color:white">Drunk Cat</h1>
+  <p style="color:white;">Para que no llegues sin nada en las manos, encuentra tus botillerías más cercanas</p>
+  </div>
 
   <div id="demo">
   </div>
@@ -68,35 +79,11 @@
 
 
   </script>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Horario</th>
-        <th>Usuario</th>
-        <th colspan="3">Acción</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @stores.each do |store| %>
-        <tr>
-          <td><%= store.name %></td>
-          <td><%= store.address %></td>
-          <td><%= store.schedule %></td>
-          <td><%= store.user %></td>
-          <td><%= link_to 'Mostrar', store %></td>
-          <td><%= link_to 'Editar', edit_store_path(store) %></td>
-          <td><%= link_to 'Eliminar', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'New Store', new_store_path %>
   
 </div>
+<div style="padding-bottom:100px;padding-left:20px;padding-right:20px;"><h3>Quiénes somos</h3>
+<p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
+<p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
+</div>
+
+<div style="margin-left:auto; margin-right:auto; width: 20%; padding: 10px;"><img src="http://png-3.findicons.com/files/icons/1979/social/50/facebook.png"><img src="http://www.albertrossell.com/wp-content/imatges/twitter50x50.png"><img src="http://megaicons.net/static/img/icons_sizes/8/178/48/logos-github-icon.png"></div>
