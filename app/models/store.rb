@@ -3,4 +3,5 @@ class Store < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
   belongs_to :user
   has_many :offers
+  mount_uploader :image, ImageUploader
 end

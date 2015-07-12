@@ -19,7 +19,7 @@ class StoresController < InheritedResources::Base
                             <h3>
                               "+"Atención: "+store.schedule+"
                             </h3>
-                          <img src='https://upload.wikimedia.org/wikipedia/commons/2/21/The_Bunghole_Liquor_Store.jpg' width='111' height='90' class=''>
+                            <img src="+store.image.to_s+">
                           </div>
                         </a>"
                     
@@ -29,18 +29,6 @@ class StoresController < InheritedResources::Base
                       "height" => 64})
     end
   end
-
-=begin
-  "<div class='box' style='width:200px;'>
-  <h4>
-  <strong>
-  "+musician.musician_name+", "+musician.instrument.instrument_name+"
-  </strong>
-  </h4>
-  <img src='http://img.youtube.com/vi/"+musician.youtube_video+"/mqdefault.jpg' width='111' height='90' class=''>
-  </div>"
-=end
-
 
   # GET /Stores/1http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png
   # GET /Stores/1.json
@@ -123,6 +111,6 @@ class StoresController < InheritedResources::Base
   private
 
     def store_params
-      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id)
+      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id, :image)
     end
 end

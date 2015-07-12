@@ -35,6 +35,12 @@
     <%= f.label :user_id, 'Usuario' %><br>
     <%= f.text_field :user_id %>
   </div>
+
+  <div class="field">
+    <%= f.label :image, 'Image' %><br>
+    <%= f.file_field :image %>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Crear tienda' %>
   </div>
