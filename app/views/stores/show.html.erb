@@ -12,37 +12,28 @@
 
         <div class="col-md-4">
 
-          <p>
-            <strong>Name:</strong>
+          <p style="padding-top:10px;">
+            <strong>Nombre: </strong>
             <%= @store.name %>
           </p>
 
           <p>
-            <strong>Address:</strong>
+            <strong>Dirección: </strong>
             <%= @store.address %>
           </p>
 
           <p>
-            <strong>Schedule:</strong>
+            <strong>Horario de atención: </strong>
             <%= @store.schedule %>
           </p>
 
-          <p>
-            <strong>Latitude:</strong>
-            <%= @store.latitude %>
-          </p>
-
-          <p>
-            <strong>Longitude:</strong>
-            <%= @store.longitude %>
-          </p>
           <%= link_to 'Editar Botillería', edit_store_path(@store) %> 
 
         </div>
       
         <div class="col-md-8">
 
-          <div style='width: 800px;'>
+          <div style='width: 800px;padding-top:10px;padding-bottom:10px;'>
             <div id="map" style='width: 800px; height: 400px;'></div>
           </div>
 
@@ -85,7 +76,7 @@
   <div class="panel panel-default">
     <div class="row">
         <div class="col-md-6">
-          <h2>Promociones</h2>
+          <h2 style="padding-left:10px;">Promociones</h2>
           <%= render 'offers/form'%>
         </div>
 

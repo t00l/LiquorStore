@@ -12,21 +12,19 @@
     </div>
   <% end %>
   
-   	<div class="field">
+   	<div class="field" style="padding-left:10px;">
 
-    		<%= f.label :name, 'Escriba la oferta'  %>
-
-    		<%= f.label :name, 'Nombre de la oferta:'  %>
+    		<%= f.label :name, 'Oferta'  %>
 
     		<%= f.text_field :name, class: "form-control", placeholder: "Nombre oferta" %>
     </div>
 
-    <div class="field">
+    <div class="field" style="padding-left:10px;">
         <%= f.label :price, 'Precio:'  %>
         <%= f.text_field :price, class: "form-control", placeholder: "Precio" %>
     </div>
 
-	<div class="action">
+	<div class="action" style="padding-left:10px;padding-bottom:10px;">
 
 		  	<%= f.submit 'Enviar', class: "btn btn-primary" %>
 
