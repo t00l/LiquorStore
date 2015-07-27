@@ -1,5 +1,7 @@
 class OffersController < ApplicationController
 
+	load_and_authorize_resource
+
 	def create
 		
 		@store = Store.find(params[:store_id])

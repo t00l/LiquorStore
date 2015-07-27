@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
-gem 'cancancan'
+gem 'cancancan', '~> 1.10'
 gem 'activeadmin', github: 'activeadmin'
 gem 'geocoder'
 gem 'gmaps4rails'

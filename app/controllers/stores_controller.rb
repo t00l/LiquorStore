@@ -1,6 +1,7 @@
 class StoresController < InheritedResources::Base
 
   before_action :set_store, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /Stores
   # GET /Stores.json
@@ -110,12 +111,6 @@ class StoresController < InheritedResources::Base
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def store_params
-      params.require(:store).permit(:address, :latitude, :longitude)
-    end
-
-
-  private
 
     def store_params
       params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id, :image)

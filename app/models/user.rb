@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
 
+  enum role: [:guest, :moderator]
+
 end

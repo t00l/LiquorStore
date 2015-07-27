@@ -235,7 +235,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   byebug
-  cancancan
+  cancancan (~> 1.10)
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
