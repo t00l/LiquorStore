@@ -30,7 +30,6 @@ class StoresController < InheritedResources::Base
                             <img src="+store.image.to_s+">
                           </div>
                         </a>"
-                    
 
       marker.picture({"url" => "http://i57.tinypic.com/68dg0j.png",
                       "width" => 64 ,
