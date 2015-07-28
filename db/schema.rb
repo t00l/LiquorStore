@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712145426) do
+ActiveRecord::Schema.define(version: 20150728010352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["store_id"], name: "index_comments_on_store_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -29,12 +40,23 @@ ActiveRecord::Schema.define(version: 20150712145426) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "offer_products", force: :cascade do |t|
+    t.integer  "store_product_id"
+    t.integer  "offer_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "offer_products", ["offer_id"], name: "index_offer_products_on_offer_id", using: :btree
+  add_index "offer_products", ["store_product_id"], name: "index_offer_products_on_store_product_id", using: :btree
+
   create_table "offers", force: :cascade do |t|
     t.string   "name"
     t.string   "price"
     t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   add_index "offers", ["store_id"], name: "index_offers_on_store_id", using: :btree
@@ -48,6 +70,25 @@ ActiveRecord::Schema.define(version: 20150712145426) do
   end
 
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "store_products", force: :cascade do |t|
+    t.float    "price"
+    t.integer  "store_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "store_products", ["product_id"], name: "index_store_products_on_product_id", using: :btree
+  add_index "store_products", ["store_id"], name: "index_store_products_on_store_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "name"
@@ -82,11 +123,18 @@ ActiveRecord::Schema.define(version: 20150712145426) do
     t.float    "longitude"
     t.string   "address"
     t.integer  "role"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "stores"
+  add_foreign_key "comments", "users"
+  add_foreign_key "offer_products", "offers"
+  add_foreign_key "offer_products", "store_products"
   add_foreign_key "offers", "stores"
+  add_foreign_key "store_products", "products"
+  add_foreign_key "store_products", "stores"
   add_foreign_key "stores", "users"
 end

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :stores
+  has_many :comments
+  
 
   geocoded_by :address
   reverse_geocoded_by :latitude, :longitude
