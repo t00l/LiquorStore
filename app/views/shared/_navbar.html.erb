@@ -14,7 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <% if can? :create, Store %>
         <li><a href="/stores/new" style="color:white;">Agrega tu local<span class="sr-only">(current)</span></a></li>
+      <%end%>
         <li><a href="#grupo" style="color:white;">Quiénes somos</a></li>
         <li><a href="#contacto" style="color:white;">Contáctanos</a></li>
       </ul>

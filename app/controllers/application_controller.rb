@@ -5,10 +5,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  protected
 
-    def configure_permitted_paraneters
-        devise_parameter_sanitazer.for(:sign_up) << :name
-        devise_parameter_sanitazer.for(:account_update) << :name
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+      devise_parameter_sanitizer.for(:account_update) << :name
     end
+
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to root_url, alert: exception.message
+    end
+
 end
