@@ -67,7 +67,8 @@ class StoresController < InheritedResources::Base
   # POST /Stores
   # POST /Stores.json
   def create
-    @store = Store.new(store_params)
+    @store = current_user.stores.build(store_params)
+    @store.user = current_user
 
     respond_to do |format|
       if @store.save
