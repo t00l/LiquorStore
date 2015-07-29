@@ -26,9 +26,9 @@
             <strong>Horario de atención: </strong>
             <%= @store.schedule %>
           </p>
-
-          <%= link_to 'Editar Botillería', edit_store_path(@store) %> 
-
+          <% if can? :update, @store %>
+            <%= link_to 'Editar Botillería', edit_store_path(@store) %> 
+          <%end%>
         </div>
       
         <div class="col-md-8">

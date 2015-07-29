@@ -61,6 +61,7 @@ class StoresController < InheritedResources::Base
 
   # GET /Stores/1/edit
   def edit
+    
   end
 
   # POST /Stores

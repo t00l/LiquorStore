@@ -16,4 +16,13 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, alert: exception.message
     end
 
+    # def configure_permitted_parameters
+    #     devise_parameter_sanitizer.for(:sign_up) << :name
+
+    #     devise_parameter_sanitizer.for(:account_update) do |u|
+    #       u.permit(:name, :email, :password,
+    #         :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar,
+    #         :remote_avatar_url)
+    #     end
+    # end
 end
