@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712145426) do
+ActiveRecord::Schema.define(version: 20150728235038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20150712145426) do
   create_table "stores", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "schedule"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
@@ -60,6 +59,10 @@ ActiveRecord::Schema.define(version: 20150712145426) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.string   "slug"
+    t.string   "openhour"
+    t.string   "openmin"
+    t.string   "closehour"
+    t.string   "closemin"
   end
 
   add_index "stores", ["slug"], name: "index_stores_on_slug", unique: true, using: :btree

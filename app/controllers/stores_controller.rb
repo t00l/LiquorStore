@@ -14,6 +14,27 @@ class StoresController < InheritedResources::Base
 
     #@stores = Store.all
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+
+      time = Time.now
+      t = time.strftime("%R").to_s
+
+      opentime = store.openhour+":"+store.openmin
+      closetime = store.closehour+":"+store.closemin
+
+      if t > opentime && t < closetime
+        @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.png"
+      else
+        if opentime < closetime
+          @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
+        else
+          if t > opentime
+            @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.pngg"
+          else
+            @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
+          end
+        end
+      end
+
       marker.lat store.latitude
       marker.lng store.longitude
       marker.infowindow "<a href='#{store_path(store)}'>
@@ -23,17 +44,17 @@ class StoresController < InheritedResources::Base
                               "+store.name+" 
                               </strong>
                             </h2>
-                            <h3>
-                              "+"Atención: "+store.schedule+"
-                            </h3>
+                            <p>
+                              "+"Atención:"+opentime+"-"+closetime+"
+                            </p>
                             <img src="+store.image.to_s+">
                           </div>
                         </a>"
                     
 
-      marker.picture({"url" => "http://i57.tinypic.com/68dg0j.png",
-                      "width" => 64 ,
-                      "height" => 64})
+      marker.picture({"url" => @url_icon,
+                      "width" => 32 ,
+                      "height" => 32});
     end
   end
 
@@ -118,6 +139,6 @@ class StoresController < InheritedResources::Base
   private
 
     def store_params
-      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id, :image)
+      params.require(:store).permit(:name, :address, :openhour, :openmin, :closehour, :closemin, :latitude, :longitude, :user_id, :image)
     end
 end
