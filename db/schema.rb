@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729023440) do
+ActiveRecord::Schema.define(version: 20150730013528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 20150729023440) do
     t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "owner_id"
   end
 
+  add_index "comments", ["owner_id"], name: "index_comments_on_owner_id", using: :btree
   add_index "comments", ["store_id"], name: "index_comments_on_store_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
@@ -60,6 +62,28 @@ ActiveRecord::Schema.define(version: 20150729023440) do
   end
 
   add_index "offers", ["store_id"], name: "index_offers_on_store_id", using: :btree
+
+  create_table "owners", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "phone"
+    t.string   "rut"
+    t.string   "name"
+    t.string   "role"
+  end
+
+  add_index "owners", ["email"], name: "index_owners_on_email", unique: true, using: :btree
+  add_index "owners", ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true, using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
@@ -101,8 +125,10 @@ ActiveRecord::Schema.define(version: 20150729023440) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.string   "slug"
+    t.integer  "owner_id"
   end
 
+  add_index "stores", ["owner_id"], name: "index_stores_on_owner_id", using: :btree
   add_index "stores", ["slug"], name: "index_stores_on_slug", unique: true, using: :btree
   add_index "stores", ["user_id"], name: "index_stores_on_user_id", using: :btree
 
@@ -133,6 +159,7 @@ ActiveRecord::Schema.define(version: 20150729023440) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "comments", "owners"
   add_foreign_key "comments", "stores"
   add_foreign_key "comments", "users"
   add_foreign_key "offer_products", "offers"
@@ -140,5 +167,6 @@ ActiveRecord::Schema.define(version: 20150729023440) do
   add_foreign_key "offers", "stores"
   add_foreign_key "store_products", "products"
   add_foreign_key "store_products", "stores"
+  add_foreign_key "stores", "owners"
   add_foreign_key "stores", "users"
 end
