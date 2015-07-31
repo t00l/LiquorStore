@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  before_save :default_values
+  before_save :default_values_user
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   enum role: [:guest, :moderator]
 
-  def default_values
+  def default_values_user
     self.role ||= 0
   end
 

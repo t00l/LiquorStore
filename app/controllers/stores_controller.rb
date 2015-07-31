@@ -67,8 +67,8 @@ class StoresController < InheritedResources::Base
   # POST /Stores
   # POST /Stores.json
   def create
-    @store = current_user.stores.build(store_params)
-    @store.user = current_user
+    @store = current_owner.stores.build(store_params)
+    @store.owner = current_owner
 
     respond_to do |format|
       if @store.save
@@ -114,6 +114,6 @@ class StoresController < InheritedResources::Base
     # Never trust parameters from the scary internet, only allow the white list through.
 
     def store_params
-      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :user_id, :image)
+      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :owner_id, :image)
     end
 end

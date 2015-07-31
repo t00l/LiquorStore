@@ -27,13 +27,18 @@
           <button type="submit" class="btn btn-default">Buscar</button>
         </form>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% unless  user_signed_in? %>
-            <li><%= link_to 'Ingresar', new_user_session_path %></li>
-            <li><%= link_to 'Registrar', new_user_registration_path %></li>
-          <%else%>
+        <ul class="nav navbar-nav navbar-right">            
+          <% if owner_signed_in? %>
+            <li><%= link_to current_owner.name, edit_owner_registration_path %></li>
+            <li><%= link_to 'Salir', destroy_owner_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
+          <% elsif user_signed_in?%>
             <li><%= link_to current_user.name, edit_user_registration_path %></li>
             <li><%= link_to 'Salir', destroy_user_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
+          <%else%>
+            <li><%= link_to 'Ingresar owner', new_owner_session_path %></li>
+            <li><%= link_to 'Ingresar', new_user_session_path %></li>
+            <li><%= link_to 'Registrar', new_user_registration_path %></li>
+            <li><%= link_to 'Registrar owner', new_owner_registration_path %></li>
           <% end %>
         </ul>
       </ul>
