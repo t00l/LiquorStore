@@ -16,9 +16,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+
         <% if can? :create, Store %>
           <li><a href="/stores/new" style="color:white;">Agrega tu local<span class="sr-only">(current)</span></a></li>
         <%end%>
+
         <li><a href="#grupo" style="color:white;">Quiénes somos</a></li>
         <li><a href="#contacto" style="color:white;">Contáctanos</a></li>
 
@@ -48,7 +50,7 @@
 
           <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Usuario?<span class="caret"></span></a>
-              <ul id=”dropdown-login” class="dropdown-menu" >
+              <ul id=”dropdown-login” class="dropdown-menu" style="padding:17px;" >
                   <%= form_for(:user, :url => user_session_path) do |f| %>
                   <div class="field">
                     <%= f.label :email %><br />
@@ -71,8 +73,9 @@
                     <%= f.submit "Log in", class: "btn btn-primary" %>
                   </div>
                 <% end %>
-                <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook)%>
-                <span class="label label-success"><%=link_to 'Registro como usuario', new_user_registration_path %></span>
+<!--                 <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook)%>
+ -->                <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-xs"%>
+                <li><span class="label label-success"><%=link_to 'Registro como usuario', new_user_registration_path %></span></li>
               </ul>
           </li>
 
@@ -98,7 +101,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
 
   <script>
 

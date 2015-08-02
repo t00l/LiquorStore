@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>HackatonBotiSeek</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -21,10 +22,11 @@
 
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
+<%= render "shared/navbar" %>
+
 
  <p class="notice"><%= notice %></p>
  <p class="alert"><%= alert %></p>
-
 
 <%= yield %>
 
