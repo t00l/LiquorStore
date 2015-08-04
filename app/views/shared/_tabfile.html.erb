@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+        <title>Dropdown Tab</title>
+          <script src="http://code.jquery.com/jquery.min.js"></script>
+      </head>
+
+        <style>
+          .tablogin{
+                margin:40px;
+          }
+        </style>
+
+      <body>
+
+      <div class="tablogin">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#loginu" data-toggle="tab">Identificar Usuario</a></li>
+            <li><a href="#registeru" data-toggle="tab">Registro Usuario</a></li>
+            <li><a href="#logino" data-toggle="tab">Identificar Dueño</a></li>
+            <li><a href="#registero" data-toggle="tab">Registro Dueño</a></li>
+        </ul>
+        
+          <div id="myTabContent" class="tab-content">
+
+            <div class="tab-pane fade in active" id="loginu">
+                <%= render 'shared/loginu' %>
+            </div>
+
+            <div class="tab-pane fade" id="registeru">
+                <%= render 'shared/registeru' %>
+            </div>
+
+            <div class="tab-pane fade" id="logino">
+                <%= render 'shared/logino' %>
+            </div>
+
+            <div class="tab-pane fade" id="registero">
+                <%= render 'shared/registero' %>
+            </div>
+            
+          </div>
+
+        </div>
+      </body>
+      </html>

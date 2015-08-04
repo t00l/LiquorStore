@@ -1,16 +1,14 @@
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid" style="background-color:#3f3f3f;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://localhost:3000" style="margin-left:auto; margin-right:auto; vertical-align: middle;"><img alt="Gatito" src="http://findicons.com/files/icons/2579/iphone_icons/40/cat.png"></a>
+
+<!--       gato index
+ --> <a class="navbar-brand" href="http://localhost:3000" style="margin-left:auto; margin-right:auto; vertical-align: middle;"><img alt="Gatito" src="http://findicons.com/files/icons/2579/iphone_icons/40/cat.png"></a>
+ 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,36 +46,10 @@
  -->
            <!--  CON DROPDOWN! -->
 
-          <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Usuario?<span class="caret"></span></a>
-              <ul id=”dropdown-login” class="dropdown-menu" style="padding:17px;" >
-                  <%= form_for(:user, :url => user_session_path) do |f| %>
-                  <div class="field">
-                    <%= f.label :email %><br />
-                    <%= f.email_field :email, autofocus: true %>
-                  </div>
+          <%= render "shared/modal" %>
 
-                  <div class="field">
-                    <%= f.label :password %><br />
-                    <%= f.password_field :password, autocomplete: "off" %>
-                  </div>
 
-                  <% if devise_mapping.rememberable? -%>
-                    <div class="field">
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
-                    </div>
-                  <% end -%>
-
-                  <div class="actions">
-                    <%= f.submit "Log in", class: "btn btn-primary" %>
-                  </div>
-                <% end %>
-<!--                 <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook)%>
- -->                <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-xs"%>
-                <li><span class="label label-success"><%=link_to 'Registro como usuario', new_user_registration_path %></span></li>
-              </ul>
-          </li>
+          <!--  FIN DROPDOWN! -->
 
             <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:white;">Registro<span class="caret"></span></a>
@@ -95,6 +67,7 @@
                 </ul>
             </li>
             <!-- FIN DROPDOWN -->
+
           <% end %>
         </ul>
       </ul>

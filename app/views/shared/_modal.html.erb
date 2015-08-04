@@ -1,0 +1,35 @@
+
+  <!-- Launch Button -->
+    <input type="button" class="btn btn-link open-modal" value="Launch Modal">
+
+    <!-- Modal Contents -->
+    <div id="demoModal" class="modal fade">
+      <div class="modal-dialog" >
+        <div class="modal-content" >
+          <div class="modal-header">
+      
+            <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true">×</button>
+      
+            <h4 class="modal-title">Identificarse / Registro</h4>
+          </div>
+      
+          <div class="modal-body">
+              <%= render "shared/tabfile"%>
+          </div>
+      
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+
+<script>
+  $(document).ready(function(){
+    $('.open-modal').click(function(){
+      $('#demoModal').appendTo("body").modal('show');
+    }); 
+  });
+</script>
