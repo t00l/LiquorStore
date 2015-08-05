@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+	<div class="media">
+	  <div class="media-body">
+	    <h4 class="media-heading"></h4>
+	    	<%= comment.content %>
+	  </div>
+	</div>        
+ </div>
+</div>
+
+<p>By <%= comment.user.name %>, commented <%= time_tag comment.created_at, time_ago_in_words(comment.created_at) %> ago</p>
