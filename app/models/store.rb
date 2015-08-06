@@ -7,6 +7,7 @@ class Store < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
+  after_validation :reverse_geocode
   belongs_to :user
   has_many :offers
   mount_uploader :image, ImageUploader
