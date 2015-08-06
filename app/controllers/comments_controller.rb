@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
   before_action :authenticate_user!
+    load_and_authorize_resource
+
 
   def create
 
@@ -8,10 +10,11 @@ class CommentsController < ApplicationController
     @comment = @store.comments.build(comments_params)
 
     @comment.user = current_user #current user
-    # @comment.owner = current_owner
+    @comment.owner = current_owner
+
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
         format.js
       else
           format.html { render 'stores/index' }
