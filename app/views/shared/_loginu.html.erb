@@ -19,8 +19,8 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-primary" %>
+    <%= f.submit "Log in", class: "button radius " %>
   </div>
   <% end %>
-    <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-xs"%>
+    <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), class: "button radius" %>
   <li><span class="label label-success"><%=link_to 'Registro como usuario', new_user_registration_path %></span></li>
