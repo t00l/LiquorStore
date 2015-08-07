@@ -1,3 +1,16 @@
-<div class="show-offers">
-	<%= offer.offer %>
-</div>
+<table class="table table-hover">
+  <div class="offers">
+      <thead>
+          <tr>
+            <th>Nombre promo</th>
+            <th>Precio</th>
+          </tr>
+      </thead>
+    <tbody> 
+      <tr>
+        <td><%= offer.name %></td>
+        <td><%= offer.price %></td>
+      </tr>
+    </tbody>
+  </div>
+</table>

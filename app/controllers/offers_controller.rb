@@ -5,6 +5,7 @@ class OffersController < ApplicationController
 	def create
 		
 		@store = Store.find(params[:store_id])
+		
 		@offer = @store.offers.build(offer_params)
 
 			respond_to do |format|

@@ -40,18 +40,25 @@ class StoresController < InheritedResources::Base
   # GET /Stores/1http://www.emojibase.com/resources/img/emojis/gemoji/1f37a.png
   # GET /Stores/1.json
   def show
+
+    #form comments
+    @comment = @store.comments.build
+    @comments = @store.comments.includes(:user).all
+    #offers
     @offer = @store.offers.build
     @offers = @store.offers.includes(:store).all.reverse 
 
-
-    @store = Store.find(params[:id])
+    #mapa
     result = request.location
+    
 
+    #gmap4rails
     @stores = Store.near([@store.latitude, @store.longitude], 5)
     @hash = Gmaps4rails.build_markers(@stores) do |stores, marker|
     marker.lat stores.latitude
     marker.lng stores.longitude
-  end
+    end
+
   end
 
   # GET /Stores/new
@@ -69,6 +76,11 @@ class StoresController < InheritedResources::Base
   def create
     @store = current_owner.stores.build(store_params)
     @store.owner = current_owner
+
+    @store = Store.find(params[:id])
+    @comment = @store.comments.build
+    #tenemos que mostrar todos los comentarios del post y pasarlos a la vista
+    @comments = @store.comments.includes(:user).all.reverse #muestra el arreglo de todos los comentarios
 
     respond_to do |format|
       if @store.save
@@ -116,4 +128,6 @@ class StoresController < InheritedResources::Base
     def store_params
       params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :owner_id, :image)
     end
+
+
 end
