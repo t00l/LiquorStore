@@ -49,39 +49,39 @@ outline: none;
 
         marker = handler.addMarker(marker_json);
         _.extend(marker, marker_json);
-        // console.log(marker.store_name);
-        // console.log(marker.store_image);
 
         return marker;
       });
 
       getLocation();
-      // console.log(marker2);
 
       markers.map(function(elem, index) {
 
         google.maps.event.addListener(elem.getServiceObject(), "click", function(evt) {
-          currentLat = marker2.serviceObject.position.k;
-          currentLng = marker2.serviceObject.position.D;
-          var origin = new google.maps.LatLng(currentLat, currentLng);
-          var destination = new google.maps.LatLng(elem.lat, elem.lng);
-
-          calcRoute(origin, destination);
-          directionsDisplay.setMap(handler.getMap());
 
           var name = elem.store_name;
           var schedule = elem.store_schedule;
           var image = elem.store_image
           var address = elem.store_address
-          // $(".modal-body #long").val( name );
-          // var coso = $(".modal-body #long").val( name );
+
           $(".clase").html("<h1>"+name+"</h1>")
           $(".clase2").html("<h2>"+schedule+"</h2>")
           $(".clase3").html("<img src="+image+">")
           $(".clase4").html("<p>"+address+"</p>")
+          $( "#target" ).click(function() {
+            showRoute(marker2, elem);
+          });
 
-          $('#DemoModal').modal('show'); http://maps.google.com/mapfiles/kml/pal3/icon55.png
+          $('#DemoModal').modal('show');
           $('.modal-backdrop').removeClass("modal-backdrop");
+
+          $('#DemoModal').on('hidden.bs.modal', function () {
+            directionsDisplay.setMap(null);
+            handler.map.centerOn(marker2);
+            handler.getMap().setZoom(14);
+          })
+
+
         });
       })
 
@@ -114,11 +114,6 @@ outline: none;
       infowindow:  "aaa"
     });
 
-    // Gmaps.event.addListener(marker2, 'click', function() { 
-    //    alert("I am marker "); 
-    // }); 
-    // markerLocation = marker2;
-    // console.log(markerLocation);
     handler.map.centerOn(marker2);
     handler.getMap().setZoom(14);
   };
@@ -163,6 +158,16 @@ outline: none;
     });
   }
 
+  function showRoute(locationMarker, destinationMarker){
+    currentLat = locationMarker.serviceObject.position.k;
+    currentLng = locationMarker.serviceObject.position.D;
+    var origin = new google.maps.LatLng(currentLat, currentLng);
+    var destination = new google.maps.LatLng(destinationMarker.lat, destinationMarker.lng);
+
+    calcRoute(origin, destination);
+    directionsDisplay.setMap(handler.getMap());
+  }
+
   initialize();
 
 
@@ -183,14 +188,15 @@ outline: none;
 
 </div>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
   $('.open-modal').click(function(){
     $('#DemoModal').modal('show');
     $('.modal-backdrop').removeClass("modal-backdrop");    
   }); 
 });
-</script>
+</script> -->
+
 
 <!-- Launch Button -->
 <!-- <input type="button" class="btn btn-lg btn-primary open-modal" value="Launch Modal"> -->
@@ -217,7 +223,7 @@ $(document).ready(function(){
       </div>
   
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" >Download</button>
+        <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Later</button>
       </div>
   

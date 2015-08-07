@@ -37,21 +37,6 @@ class StoresController < InheritedResources::Base
         end
       end
 
-
-      # if t > opentime && t < closetime
-      #   @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.png"
-      # else
-      #   if opentime < closetime
-      #     @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
-      #   else
-      #     if t > opentime
-      #       @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.png"
-      #     else
-      #       @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
-      #     end
-      #   end
-      # end
-
       marker.lat store.latitude
       marker.lng store.longitude
 <<<<<<< HEAD
@@ -70,15 +55,7 @@ class StoresController < InheritedResources::Base
                         </a>"
 =======
 
-      # marker.title store.name+opentime+closetime
-      # marker.description "hola"
       marker.json({:store_name => store.name, :store_schedule => schedule, :store_image => store.image.to_s, :store_address => store.address})
-
-
-
-      # marker.serviceObject.set('store_name', store.name);
-      # marker.json({:namedesef => store.name})
-
 
       # marker.infowindow "<a href='#{store_path(store)}'>
       #                     <div class='box' style='width:120px;'>
