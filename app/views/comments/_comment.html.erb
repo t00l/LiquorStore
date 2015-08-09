@@ -2,4 +2,8 @@
 	<%= comment.content %>
 </div>
 
-<p>By <%= comment.user.name %>, commented <%= time_tag comment.created_at, time_ago_in_words(comment.created_at) %> ago</p>
+<% if comment.user.present? %>
+	<p>By <%= comment.user.name  %>, commented <%= time_tag comment.created_at, time_ago_in_words(comment.created_at) %> ago</p>
+<% elsif comment.owner.present?%>
+	<p>By <%= comment.owner.name  %>, commented <%= time_tag comment.created_at, time_ago_in_words(comment.created_at) %> ago</p>
+<% end %>

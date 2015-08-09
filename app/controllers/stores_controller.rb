@@ -42,8 +42,10 @@ class StoresController < InheritedResources::Base
   def show
 
     #form comments
-    @comment = @store.comments.build
-    @comments = @store.comments.includes(:user).all
+    @comment = @store.comments.build    
+
+    @comments = @store.comments.includes(:user).all.reverse
+
     #offers
     @offer = @store.offers.build
     @offers = @store.offers.includes(:store).all.reverse 
@@ -77,10 +79,11 @@ class StoresController < InheritedResources::Base
     @store = current_owner.stores.build(store_params)
     @store.owner = current_owner
 
-    @store = Store.find(params[:id])
+    # @store = Store.find(params[:id])
     @comment = @store.comments.build
     #tenemos que mostrar todos los comentarios del post y pasarlos a la vista
     @comments = @store.comments.includes(:user).all.reverse #muestra el arreglo de todos los comentarios
+
 
     respond_to do |format|
       if @store.save

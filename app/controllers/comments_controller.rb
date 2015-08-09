@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!
-    load_and_authorize_resource
+  # before_action :authenticate_user!
+  # load_and_authorize_resource
 
 
   def create
@@ -9,8 +9,11 @@ class CommentsController < ApplicationController
     @store = Store.find(params[:store_id])
     @comment = @store.comments.build(comments_params)
 
+
     @comment.user = current_user #current user
     @comment.owner = current_owner
+
+    # @comments = @store.comments.all
 
     respond_to do |format|
       if @comment.save
