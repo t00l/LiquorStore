@@ -7,7 +7,7 @@
   </ul>
   <div class="top-bar-section">
     <ul>
-      <%= render 'layouts/navigation_links' %>
+      # <%= render 'layouts/navigation_links' %>
     </ul>
   </div>
 </nav>
@@ -39,22 +39,8 @@
 </div>
 <!-- Reveal Modals end -->
 
-<div>
-        <% if can? :create, Store %>
-          <li><a href="/stores/new" style="color:white;">Agrega tu local<span class="sr-only">(current)</span></a></li>
-        <%end%>
-
-       
+<div>  
     
-          <% if owner_signed_in? %>
-            <li><%= link_to current_owner.name, edit_owner_registration_path %></li>
-            <li><%= link_to 'Salir', destroy_owner_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
-          <% elsif user_signed_in?%>
-            <li><%= link_to current_user.name, edit_user_registration_path %></li>
-            <li><%= link_to 'Salir', destroy_user_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
-          <%else%>
 
- <!--        SIN DROPDOWN! -->
-              <%end%>
 </div>
 

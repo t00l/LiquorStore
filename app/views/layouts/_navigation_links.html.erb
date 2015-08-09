@@ -1,4 +1,20 @@
 <%# add navigation links to this file %>
+
+       
+<% if can? :create, Store %>
+	<li><a href="/stores/new" style="color:white;">Agrega tu local<span class="sr-only"></span></a></li>
+<%end%>
+
+<% if owner_signed_in? %>
+  <li><%= link_to current_owner.name, edit_owner_registration_path %></li>
+  <li><%= link_to 'Salir', destroy_owner_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
+<% elsif user_signed_in?%>
+  <li><%= link_to current_user.name, edit_user_registration_path %></li>
+  <li><%= link_to 'Salir', destroy_user_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
+<%else%>
 <li><a href="#" data-reveal-id="firstModal">Inicia Sesión</a></li>
 <li><%= link_to 'Ingreso owner', new_owner_session_path %></li>
 <li><%= link_to 'Ingreso user', new_user_session_path %></li>
+
+<!--        SIN DROPDOWN! -->
+<%end%>
