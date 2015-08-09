@@ -220,6 +220,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    ratyrate (1.2.2.alpha)
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -287,6 +288,7 @@ DEPENDENCIES
   rails (= 4.2.3)
   rails_12factor
   rails_layout
+  ratyrate
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -294,3 +296,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.5

@@ -2,6 +2,8 @@ class Store < ActiveRecord::Base
   include PgSearch
   extend FriendlyId
 
+  ratyrate_rateable 'rate'
+
   has_many :offers
   has_many :comments
   belongs_to :user

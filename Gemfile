@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth-facebook'
 gem 'jquery-turbolinks'
 
+gem 'ratyrate'
+
 group :production do 
   gem 'rails_12factor'
 end 
