@@ -3,7 +3,7 @@ $.fn.raty.defaults.halfShow = true;
 $.fn.raty.defaults.path = "/assets";
 $.fn.raty.defaults.cancel = false;
 
-$(function(){
+ $(document).on("ready page:load",function(){ //replace with this code
   $(".star").each(function() {
     var $readonly = ($(this).attr('data-readonly') == 'true');
     var $half     = ($(this).attr('data-enable-half') == 'true');
