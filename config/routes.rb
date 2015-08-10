@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   post '/rate' => 'rater#create', :as => 'rate'
   get 'comments/new'
 
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'comments/destroy'
 
-  devise_for :owners
+devise_for :owners, controllers: { registrations: "owners/registrations" }
 
   resources :stores do
     resources :comments

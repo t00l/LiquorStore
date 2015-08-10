@@ -6,7 +6,7 @@ class StoresController < InheritedResources::Base
   # GET /Stores
   # GET /Stores.json
   def index
-
+    @store = Store.new
     if params.key?(:query) && !params[:query].empty?
       @stores = Store.search_by_name(params[:query])
     else
