@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150809041545) do
+=======
+
+ActiveRecord::Schema.define(version: 20150731231846) do
+>>>>>>> 77b76ed... Fixed conflicts
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +165,6 @@ ActiveRecord::Schema.define(version: 20150809041545) do
   create_table "stores", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "schedule"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
@@ -168,6 +173,11 @@ ActiveRecord::Schema.define(version: 20150809041545) do
     t.string   "image"
     t.string   "slug"
     t.integer  "owner_id"
+    t.string   "openhour"
+    t.string   "openmin"
+    t.string   "closehour"
+    t.string   "closemin"
+
   end
 
   add_index "stores", ["owner_id"], name: "index_stores_on_owner_id", using: :btree

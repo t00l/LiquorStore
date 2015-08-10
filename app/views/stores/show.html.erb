@@ -23,7 +23,7 @@
 
           <p>
             <strong>Horario de atención: </strong>
-            <%= @store.schedule %>
+            <%= @store.openhour %>:<%= @store.openmin %> - <%= @store.closehour %>:<%= @store.closemin %>
           </p>
           <% if can? :update, @store %>
             <%= link_to 'Editar Botillería', edit_store_path(@store) %> 
