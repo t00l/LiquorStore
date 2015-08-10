@@ -39,21 +39,6 @@ class StoresController < InheritedResources::Base
 
       marker.lat store.latitude
       marker.lng store.longitude
-<<<<<<< HEAD
-      marker.infowindow "<a href='#{store_path(store)}'>
-                          <div class='box' style='width:120px;'>
-                            <h2>
-                              <strong>
-                              "+store.name+" 
-                              </strong>
-                            </h2>
-                            <p>
-                              "+"Atención:"+opentime+"-"+closetime+"
-                            </p>
-                            <img src="+store.image.to_s+">
-                          </div>
-                        </a>"
-=======
 
       marker.json({:store_name => store.name, :store_schedule => schedule, :store_image => store.image.to_s, :store_address => store.address})
 
@@ -71,7 +56,6 @@ class StoresController < InheritedResources::Base
       #                     </div>
       #                   </a>"
                     
->>>>>>> c1dfa67... Added modals with stores info and routes, fixed open and closed icons
 
       marker.picture({"url" => @url_icon,
                       "width" => 32 ,

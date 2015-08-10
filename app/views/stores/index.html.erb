@@ -1,23 +1,11 @@
-<<<<<<< HEAD
-=======
-<style>
+ <style>
 #DemoModal {
 top:5%;
 right:50%;
 outline: none;
 }
-</style>
+</style> 
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <%= render 'shared/navbar' %>
->>>>>>> c1dfa67... Added modals with stores info and routes, fixed open and closed icons
   <p id="notice"><%= notice %></p>
 
   <div id="demo">
@@ -35,10 +23,11 @@ outline: none;
 
   <script>
 
+  
+
 
   var handler = Gmaps.build('Google');
-
-
+  var current;
 
   function initialize(){
 
@@ -68,24 +57,59 @@ outline: none;
           $(".clase2").html("<h2>"+schedule+"</h2>")
           $(".clase3").html("<img src="+image+">")
           $(".clase4").html("<p>"+address+"</p>")
-          $( "#target" ).click(function() {
-            showRoute(marker2, elem);
-          });
+          
+          // $(document).foundation();
+          // $('#DemoModal').modal('show');
+          $('#DemoModal').foundation('reveal', 'open');
+          // $('.modal-backdrop').removeClass("modal-backdrop");
 
-          $('#DemoModal').modal('show');
-          $('.modal-backdrop').removeClass("modal-backdrop");
+          // $('#DemoModal').bind('closed', function() {
+          //    console.log("myModal closed!");
+          //  });
+          // $(document).on('opened', '[data-reveal]', function () {
+          //   debugger
+          //   console.log('failed loading modal');
+          // });
 
-          $('#DemoModal').on('hidden.bs.modal', function () {
-            directionsDisplay.setMap(null);
-            handler.map.centerOn(marker2);
-            handler.getMap().setZoom(14);
-          })
+          // $('#DemoModal').on('hidden.bs.modal', function () {
+          //   directionsDisplay.setMap(null);
+          //   handler.map.centerOn(marker2);
+          //   handler.getMap().setZoom(14);
+          // })
 
+          // $('#DemoModal').foundation('reveal', 'open', {
+          //   success: function() {
+          //       console.log('modal data loaded');
+          //   },
+          //   error: function() {
+          //       console.log('failed loading modal');
+          //   }
+          // });
+          // $("#DemoModal").reveal({ "closed": function () { alert("Good bye") } });
+
+        //   $('#DemoModal').foundation('reveal', 'open', {
+
+        //     success: function() {
+        //         debugger
+        //         alert('modal data loaded');
+        //     },
+        //     error: function() {
+        //         alert('failed loading modal');
+        //     }
+        // });
+
+        current = elem;
 
         });
+
+        
+
+
+
       })
 
     });
+    
   }
 
   function getLocation(){
@@ -135,10 +159,7 @@ outline: none;
     handler.getMap().setZoom(15);
   };
 
-<<<<<<< HEAD
-  </script>
-=======
-  
+
 
   var directionsDisplay = new google.maps.DirectionsRenderer();
   var directionsService = new google.maps.DirectionsService();
@@ -173,20 +194,6 @@ outline: none;
 
   </script>
   
-</div>
-<div style="padding-bottom:100px;padding-left:20px;padding-right:20px;"><a name="grupo" style="text-decoration:none;"><h3 style="text-align:center;">Quiénes somos</h3></a>
-<p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
-<p>Lorem ipsum dolor sit cuchuflí barquillo bacán jote gamba listeilor po cahuín, luca melón con vino pichanga coscacho ni ahí peinar la muñeca chuchada al chancho achoclonar. Chorrocientos pituto ubicatex huevo duro bolsero cachureo el hoyo del queque en cana huevón el año del loly hacerla corta impeque de miedo quilterry la raja longi ñecla. Hilo curado rayuela carrete quina guagua lorea piola ni ahí.</p>
-</div>
-
-<h3 style="text-align:center;"><a name="contacto" style="text-decoration:none;background-color:white;">Contáctanos</h3>
-<div style="margin-left:auto; margin-right:auto; width: 20%; padding: 10px;">
-
-  <img src="http://png-3.findicons.com/files/icons/1979/social/50/facebook.png">
-  <img src="http://www.albertrossell.com/wp-content/imatges/twitter50x50.png">
-  <img src="http://megaicons.net/static/img/icons_sizes/8/178/48/logos-github-icon.png"></a>
-
-</div>
 
 <!-- <script>
 $(document).ready(function(){
@@ -202,7 +209,7 @@ $(document).ready(function(){
 <!-- <input type="button" class="btn btn-lg btn-primary open-modal" value="Launch Modal"> -->
 
 <!-- Modal Contents -->
-<div id="DemoModal" class="modal fade">
+<!-- <div id="DemoModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -214,8 +221,8 @@ $(document).ready(function(){
       </div>
   
       <div class="modal-body">
-        <!-- <p>Your software Version is Old, a new version of the software is available.</p>
-        <p class="text-warning"><small>Would you like to download it now.</small></p> -->
+        <p>Your software Version is Old, a new version of the software is available.</p>
+        <p class="text-warning"><small>Would you like to download it now.</small></p>
         <div class="clase"></div>
         <div class="clase2"></div>
         <div class="clase3"></div>
@@ -229,6 +236,33 @@ $(document).ready(function(){
   
     </div>
   </div>
+</div> -->
+
+<!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->>
+<div id="DemoModal" style="display: none!important" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+  <div class="clase"></div>
+  <div class="clase2"></div>
+  <div class="clase3"></div>
+  <div class="clase4"></div>
+  <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
->>>>>>> c1dfa67... Added modals with stores info and routes, fixed open and closed icons
+<script>
+  $(document).foundation();
+  $(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+    console.log("hola")
+  });
+
+  $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
+    console.log("chao")
+    directionsDisplay.setMap(null);
+    handler.map.centerOn(marker2);
+    handler.getMap().setZoom(14);
+  });
+
+  $( "#target" ).click(function() {
+    showRoute(marker2, current);
+  });
+</script>
+

@@ -12,12 +12,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150809041545) do
 =======
 
+=======
+>>>>>>> 127fe80... Fix map modal
 ActiveRecord::Schema.define(version: 20150731231846) do
 >>>>>>> 77b76ed... Fixed conflicts
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,12 +174,11 @@ ActiveRecord::Schema.define(version: 20150731231846) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.string   "slug"
-    t.integer  "owner_id"
     t.string   "openhour"
     t.string   "openmin"
     t.string   "closehour"
     t.string   "closemin"
-
+    t.integer  "owner_id"
   end
 
   add_index "stores", ["owner_id"], name: "index_stores_on_owner_id", using: :btree

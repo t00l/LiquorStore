@@ -15,13 +15,10 @@ class Store < ActiveRecord::Base
   geocoded_by :address
 
   after_validation :geocode, :if => :address_changed?
-<<<<<<< HEAD
 
-=======
   after_validation :reverse_geocode
-  belongs_to :user
-  has_many :offers
->>>>>>> c1dfa67... Added modals with stores info and routes, fixed open and closed icons
+
+
   mount_uploader :image, ImageUploader
 
   friendly_id :name, use: [:slugged, :finders]
