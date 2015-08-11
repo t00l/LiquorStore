@@ -1,5 +1,7 @@
 class Owner < ActiveRecord::Base
 
+  validates_uniqueness_of :email, :rut
+
   before_save :default_values_owner
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

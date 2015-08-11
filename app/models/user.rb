@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   ratyrate_rater
 
+  validates_uniqueness_of :email
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
   has_many :stores
