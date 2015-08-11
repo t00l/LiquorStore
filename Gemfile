@@ -38,6 +38,7 @@ gem 'jquery-turbolinks'
 
 gem 'ratyrate'
 
+gem "selectize-rails"
 
 group :production do 
   gem 'rails_12factor'
