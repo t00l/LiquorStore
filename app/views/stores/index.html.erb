@@ -1,18 +1,19 @@
- <style>
-#DemoModal {
-top:5%;
-right:50%;
-outline: none;
-}
-</style> 
-
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
   <div id="demo">
   </div>
 
   <div class="map_container">
+    <div id="DemoModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+        <div class="clase"></div>
+        <div class="clase2"></div>
+        <div class="clase3"></div>
+        <div class="clase4"></div>
+        <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
+        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
     <div id="geolocation" class="geolocation"></div>
+    <div class="reveal-modal-bg" style="display: none"></div>
   </div>
 
   <br>
@@ -239,15 +240,7 @@ $(document).ready(function(){
 </div> -->
 
 <!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->>
-<div id="DemoModal" style="display: none" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
-  <div class="clase"></div>
-  <div class="clase2"></div>
-  <div class="clase3"></div>
-  <div class="clase4"></div>
-  <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
-<div class="reveal-modal-bg" style="display: none"></div>
+
 
 <script>
   $(document).foundation();

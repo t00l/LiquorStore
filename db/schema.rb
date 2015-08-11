@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150809041545) do
-=======
-
-=======
->>>>>>> 127fe80... Fix map modal
-ActiveRecord::Schema.define(version: 20150731231846) do
->>>>>>> 77b76ed... Fixed conflicts
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
