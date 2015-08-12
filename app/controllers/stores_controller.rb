@@ -54,22 +54,7 @@ class StoresController < InheritedResources::Base
                   :store_address => store.address, 
                   :store_rating => store.rate_average ? store.rate_average.avg : 0,
                   :store_location => location
-                  })
-
-      # marker.infowindow "<a href='#{store_path(store)}'>
-      #                     <div class='box' style='width:120px;'>
-      #                       <h2>
-      #                         <strong>
-      #                         "+store.id.to_s+" 
-      #                         </strong>
-      #                       </h2>
-      #                       <p>
-      #                         "+"Atención:"+opentime+"-"+closetime+"
-      #                       </p>
-      #                       <img src="+store.image.to_s+">
-      #                     </div>
-      #                   </a>"
-                    
+                  })             
 
       marker.picture({"url" => @url_icon,
                       "width" => 32 ,

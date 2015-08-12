@@ -57,11 +57,7 @@
               
           // console.log(elem.store_location[0].data.formatted_address);
 
-          $(".clase").html("<h1><a href='stores/"+name_norm.replace(' ','-').toLowerCase()+"'>"+name+" </a></h1>")
-
-
-
-          $(".clasenombre").html("<h2>"+name+"</h2>")
+          $(".clasenombre").html("<h1><a href='stores/"+name_norm.replace(' ','-').toLowerCase()+"'>"+name+" </a></h1>")
           $(".clasehora").html("<h3>"+schedule+"</h3>")
           $(".claseimagen").html("<img src="+image+">")
           $(".clasedireccion").html("<p>"+reverse_address+"</p>")
@@ -76,44 +72,6 @@
           
 
           $('#DemoModal').foundation('reveal', 'open');
-
-
-          // $('.modal-backdrop').removeClass("modal-backdrop");
-
-          // $('#DemoModal').bind('closed', function() {
-          //    console.log("myModal closed!");
-          //  });
-          // $(document).on('opened', '[data-reveal]', function () {
-          //   debugger
-          //   console.log('failed loading modal');
-          // });
-
-          // $('#DemoModal').on('hidden.bs.modal', function () {
-          //   directionsDisplay.setMap(null);
-          //   handler.map.centerOn(marker2);
-          //   handler.getMap().setZoom(14);
-          // })
-
-          // $('#DemoModal').foundation('reveal', 'open', {
-          //   success: function() {
-          //       console.log('modal data loaded');
-          //   },
-          //   error: function() {
-          //       console.log('failed loading modal');
-          //   }
-          // });
-          // $("#DemoModal").reveal({ "closed": function () { alert("Good bye") } });
-
-        //   $('#DemoModal').foundation('reveal', 'open', {
-
-        //     success: function() {
-        //         debugger
-        //         alert('modal data loaded');
-        //     },
-        //     error: function() {
-        //         alert('failed loading modal');
-        //     }
-        // });
 
         current = elem;
 
@@ -213,52 +171,6 @@
 
 
   </script>
-  
-
-<!-- <script>
-$(document).ready(function(){
-  $('.open-modal').click(function(){
-    $('#DemoModal').modal('show');
-    $('.modal-backdrop').removeClass("modal-backdrop");    
-  }); 
-});
-</script> -->
-
-
-<!-- Launch Button -->
-<!-- <input type="button" class="btn btn-lg btn-primary open-modal" value="Launch Modal"> -->
-
-<!-- Modal Contents -->
-<!-- <div id="DemoModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-  
-        <button type="button" class="close" data-dismiss="modal"
-        aria-hidden="true">×</button>
-  
-        <h4 class="modal-title">Botilleria!!</h4>
-      </div>
-  
-      <div class="modal-body">
-        <p>Your software Version is Old, a new version of the software is available.</p>
-        <p class="text-warning"><small>Would you like to download it now.</small></p>
-        <div class="clase"></div>
-        <div class="clase2"></div>
-        <div class="clase3"></div>
-        <div class="clase4"></div>
-      </div>
-  
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Later</button>
-      </div>
-  
-    </div>
-  </div>
-</div> -->
-
-<!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->
 
 <script>
   $(document).foundation();
