@@ -25,15 +25,15 @@ class StoresController < InheritedResources::Base
 
       if opentime < closetime
         if t >= opentime && t <= closetime
-          @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.png"
+          @url_icon = ActionController::Base.helpers.asset_path("openedstore.png")
         else
-          @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
+          @url_icon = ActionController::Base.helpers.asset_path("closedstore.png")
         end
       else  
         if t > closetime && t < opentime
-          @url_icon = "http://www.sandwichvip.cl/imagenes/iconos/blueberry_32/close_delete.png"
+          @url_icon = ActionController::Base.helpers.asset_path("closedstore.png")
         else
-          @url_icon = "http://maps.google.com/mapfiles/kml/pal3/icon55.png"
+          @url_icon = ActionController::Base.helpers.asset_path("openedstore.png")
         end
       end
 
@@ -57,8 +57,8 @@ class StoresController < InheritedResources::Base
                   })             
 
       marker.picture({"url" => @url_icon,
-                      "width" => 32 ,
-                      "height" => 32});
+                      "width" => 36 ,
+                      "height" => 36});
     end
   end
 
