@@ -1,28 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'products/index'
-
-  get 'products/show'
-
-  get 'products/new'
-
-  get 'products/create'
-
-  get 'products/update'
-
-  get 'products/destroy'
-
-  get 'products/index'
-
-  get 'products/show'
-
-  get 'products/new'
-
-  get 'products/create'
-
-  get 'products/update'
-
-  get 'products/destroy'
+resources :products
 
   post '/rate' => 'rater#create', :as => 'rate'
   get 'comments/new'
