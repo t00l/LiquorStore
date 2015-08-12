@@ -9,6 +9,7 @@
         <div class="clasehora"></div>
         <div class="claseimagen"></div>
         <div class="clasedireccion"></div>
+        <div class="clasestars"></div>
         <button class="button round" id="target" >Trazar Ruta</button>
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
@@ -21,8 +22,6 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
   <script>
-
-  
 
 
   var handler = Gmaps.build('Google');
@@ -42,35 +41,43 @@
       });
 
       getLocation();
-
+      
       markers.map(function(elem, index) {
 
         google.maps.event.addListener(elem.getServiceObject(), "click", function(evt) {
 
-          var id = elem.store_id;
-          var name = elem.store_name;
-          var schedule = elem.store_schedule;
-          var image = elem.store_image;
-          var address = elem.store_address;
-          var stars = elem.store_stars;
+          var id = elem.store_id,
+              name = elem.store_name,
+              name_norm = elem.store_name_norm,
+              schedule = elem.store_schedule,
+              image = elem.store_image,
+              address = elem.store_address,
+              rating = elem.store_rating,
+              reverse_address = elem.store_location[0].data.formatted_address
+              
+          // console.log(elem.store_location[0].data.formatted_address);
 
-          var rate = elem.store_stars;
-          console.log(rate);
+          $(".clase").html("<h1><a href='stores/"+name_norm.replace(' ','-').toLowerCase()+"'>"+name+" </a></h1>")
 
-          $(".clase").html("<h1><a href='stores/"+id+"'>"+name+" </a></h1>")
 
 
           $(".clasenombre").html("<h2>"+name+"</h2>")
           $(".clasehora").html("<h3>"+schedule+"</h3>")
           $(".claseimagen").html("<img src="+image+">")
-          $(".clasedireccion").html("<p>"+address+"</p>")
+          $(".clasedireccion").html("<p>"+reverse_address+"</p>")
+          $(".clasestars").html("<p>"+Math.round(rating*10)/10+"</p>")
 
           // $(document).foundation();
           // $('#DemoModal').modal('show');
+          
+          $("#DemoModal").removeClass('open', function(){
+            deleteRoute();
+          });
+          
+
           $('#DemoModal').foundation('reveal', 'open');
 
 
-          
           // $('.modal-backdrop').removeClass("modal-backdrop");
 
           // $('#DemoModal').bind('closed', function() {
@@ -111,7 +118,6 @@
         current = elem;
 
         });
-
 
       })
 
@@ -194,6 +200,13 @@
 
     calcRoute(origin, destination);
     directionsDisplay.setMap(handler.getMap());
+    directionsDisplay.setOptions( { suppressMarkers: true } );
+  }
+
+  function deleteRoute(){
+    directionsDisplay.setMap(null);
+    handler.map.centerOn(marker2);
+    handler.getMap().setZoom(14);
   }
 
   initialize();
@@ -247,11 +260,9 @@ $(document).ready(function(){
 
 <!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->
 
-
 <script>
   $(document).foundation();
   $(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
-    console.log("hola")
   });
 
   $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
@@ -265,14 +276,4 @@ $(document).ready(function(){
     showRoute(marker2, current);
   });
 
-  // $('div').raty({ score: 3.26 });
-
 </script>
-
-<div>
-  <h4>Comentarios</h4>
-  <%= rating_for marker2, "rate"%>
-</div>
-
-
-

@@ -37,10 +37,24 @@ class StoresController < InheritedResources::Base
         end
       end
 
+      store_name_norm = ActiveSupport::Inflector.transliterate(store.name)
+
       marker.lat store.latitude
       marker.lng store.longitude
+ 
+      loc = store.latitude.to_s+", "+store.longitude.to_s
 
-      marker.json({:store_id => store.id ,:store_name => store.name, :store_schedule => schedule, :store_image => store.image.to_s, :store_address => store.address})
+      location = Geocoder.search(loc)
+
+      marker.json({:store_id => store.id ,
+                  :store_name => store.name,
+                  :store_name_norm => store_name_norm,
+                  :store_schedule => schedule, 
+                  :store_image => store.image.to_s, 
+                  :store_address => store.address, 
+                  :store_rating => store.rate_average ? store.rate_average.avg : 0,
+                  :store_location => location
+                  })
 
       # marker.infowindow "<a href='#{store_path(store)}'>
       #                     <div class='box' style='width:120px;'>
