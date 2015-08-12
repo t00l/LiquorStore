@@ -1,6 +1,7 @@
 <%# add navigation links to this file %>
 <% if can? :create, Store %>
-	<li><a href="/stores/new" style="color:white;">Agrega tu local<span class="sr-only"></span></a></li>
+	<li><a href="/stores/new" style="color:white;">Agrega un local<span class="sr-only"></span></a></li>
+  <li><a href="/owners/stores" style="color:white;">Administrar locales<span class="sr-only"></span></a></li>
 <%end%>
 
 <% if owner_signed_in? %>
@@ -11,13 +12,11 @@
   <li><%= link_to 'Salir', destroy_user_session_path, method: :delete, data: { confirm: 'Seguro que deseas salir?'} %></li>
 <%else%>
 	<li><a href="#" data-reveal-id="firstModal">Inicia Sesión</a></li>
-	<li><%= link_to 'Ingreso owner', new_owner_session_path %></li>
-	<li><%= link_to 'Ingreso user', new_user_session_path %></li>
 <%end%>
 
 <!-- Empiezan los modales -->
 <!-- Primer modal -->
-<div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+<div id="firstModal" class="reveal-modal loginmodal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
   <div class="row">
     <div class="large-12 columns">
       <h2 id="firstModalTitle" class="text-center">Inicia Sesión</h2>
@@ -29,26 +28,26 @@
 </div>
 
 <!-- Segundo modal -->
-<div id="secondModal" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
+<div id="secondModal" class="reveal-modal loginmodal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
   <%= render "shared/loginu" %>
-  <p><a href="#" data-reveal-id="fifthModal" class="text-center">¿No tienes cuenta? Regístrate ahora :)</a>
+  <p><a href="#" data-reveal-id="fifthModal loginmodal" class="text-center">¿No tienes cuenta? Regístrate ahora :)</a>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
 <!-- Tercer modal -->
-<div id="thirdModal" class="reveal-modal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
+<div id="thirdModal" class="reveal-modal loginmodal" data-reveal aria-labelledby="thirdModalTitle" aria-hidden="true" role="dialog">
   <%= render "shared/logino" %>
   <p><a href="#" data-reveal-id="fourthModal" class="text-center">¿Tienes una botillería? Regístrate ahora :)</a></p>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
 <!-- Cuarto modal -->
-<div id="fourthModal" class="reveal-modal" data-reveal aria-labelledby="fourthModalTitle" aria-hidden="true" role="dialog">
+<div id="fourthModal" class="reveal-modal loginmodal" data-reveal aria-labelledby="fourthModalTitle" aria-hidden="true" role="dialog">
   <%= render "shared/registero" %>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
-<div id="fifthModal" class="reveal-modal" data-reveal aria-labelledby="fifthModalTitle" aria-hidden="true" role="dialog">
+<div id="fifthModal" class="reveal-modal loginmodal" data-reveal aria-labelledby="fifthModalTitle" aria-hidden="true" role="dialog">
   <%= render "shared/registeru" %>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
@@ -58,12 +57,5 @@ $(document).foundation();
 });</script>
 
 <!-- Script para generar el popup del cuarto modal -->
-<script>
-  $(document).ready(function(){
-    if(window.location.hash=='#congrats') {
-      $('#fourthModal').foundation('reveal', 'open');
-    }
-  }); 
-</script>
 
 

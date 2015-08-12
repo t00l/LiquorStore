@@ -5,18 +5,16 @@
 
   <div class="map_container">
     <div id="DemoModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
-        <div class="clase"></div>
-        <div class="clase2"></div>
-        <div class="clase3"></div>
-        <div class="clase4"></div>
-        <button type="button" class="btn btn-default" id="target" >Trazar Ruta</button>
+        <div class="clasenombre"></div>
+        <div class="clasehora"></div>
+        <div class="claseimagen"></div>
+        <div class="clasedireccion"></div>
+        <button class="button round" id="target" >Trazar Ruta</button>
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     </div>
     <div id="geolocation" class="geolocation"></div>
     <div class="reveal-modal-bg" style="display: none"></div>
   </div>
-
-  <br>
 
   <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
 
@@ -54,10 +52,10 @@
           var image = elem.store_image
           var address = elem.store_address
 
-          $(".clase").html("<h1>"+name+"</h1>")
-          $(".clase2").html("<h2>"+schedule+"</h2>")
-          $(".clase3").html("<img src="+image+">")
-          $(".clase4").html("<p>"+address+"</p>")
+          $(".clasenombre").html("<h2>"+name+"</h2>")
+          $(".clasehora").html("<h3>"+schedule+"</h3>")
+          $(".claseimagen").html("<img src="+image+">")
+          $(".clasedireccion").html("<p>"+address+"</p>")
           
           // $(document).foundation();
           // $('#DemoModal').modal('show');
@@ -102,9 +100,6 @@
         current = elem;
 
         });
-
-        
-
 
 
       })
@@ -239,7 +234,7 @@ $(document).ready(function(){
   </div>
 </div> -->
 
-<!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->>
+<!-- <a class="button" href="#" data-reveal-id="DemoModal">Inicia Sesión</a -->
 
 
 <script>

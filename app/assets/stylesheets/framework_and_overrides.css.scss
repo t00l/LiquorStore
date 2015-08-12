@@ -125,14 +125,14 @@ section {
       margin-right: auto;
     }
 
-.reveal-modal {
+.loginmodal {
   background-color: black;
   color:white;
   border: none;
-  top:45px;
+  top: 45px;
 }
 
-.reveal-modal > h2 {
+.loginmodal > h2 {
   color:white;
 } 
 
@@ -160,7 +160,7 @@ a.secondary.button {
 .button.round {
   margin:auto;
   display:block;
-  background-color: red;
+  background-color: lightblue;
 }
 
 h2 {
@@ -179,14 +179,15 @@ div.text-center > a {
 }
 
 #DemoModal {
-top:416px;
-right:0;
+bottom:0px;
+right:0px;
+top:initial;
 outline: none;
 display: none;
-position: absolute;
+position: fixed;
 z-index: 100;
 width: 50%;
-height: 42%;
+height: 40%;
 }
 
 select#store_openmin{
@@ -214,6 +215,7 @@ select#store_closemin{
       padding-top: 20px;
       padding-bottom: 600px;
       width: 100%;
+      height: 100%;
       min-width: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -222,7 +224,7 @@ select#store_closemin{
 
 .map_container .geolocation{
 
-    position: absolute;
+      position: absolute;
       left: 0px;
       top: 0px;
       z-index: 2;
@@ -231,4 +233,25 @@ select#store_closemin{
       margin-left: auto;
       margin-right: auto;
     }
+
+#DemoModal {
+bottom:0px !important;
+right:0px;
+outline: none;
+display: none;
+position: fixed;
+z-index: 100;
+width: 100%;
+height:45% ;
+top:initial;
+}
+
+.loginmodal {
+  min-height: 0px;
+  height:100%;
+}
+
+.reveal-modal {
+  min-height: 0px;
+}
 }
