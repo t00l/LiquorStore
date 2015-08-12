@@ -47,19 +47,30 @@
 
         google.maps.event.addListener(elem.getServiceObject(), "click", function(evt) {
 
+          var id = elem.store_id;
           var name = elem.store_name;
           var schedule = elem.store_schedule;
-          var image = elem.store_image
-          var address = elem.store_address
+          var image = elem.store_image;
+          var address = elem.store_address;
+          var stars = elem.store_stars;
+
+          var rate = elem.store_stars;
+          console.log(rate);
+
+          $(".clase").html("<h1><a href='stores/"+id+"'>"+name+" </a></h1>")
+
 
           $(".clasenombre").html("<h2>"+name+"</h2>")
           $(".clasehora").html("<h3>"+schedule+"</h3>")
           $(".claseimagen").html("<img src="+image+">")
           $(".clasedireccion").html("<p>"+address+"</p>")
-          
+
           // $(document).foundation();
           // $('#DemoModal').modal('show');
           $('#DemoModal').foundation('reveal', 'open');
+
+
+          
           // $('.modal-backdrop').removeClass("modal-backdrop");
 
           // $('#DemoModal').bind('closed', function() {
@@ -253,5 +264,15 @@ $(document).ready(function(){
   $( "#target" ).click(function() {
     showRoute(marker2, current);
   });
+
+  // $('div').raty({ score: 3.26 });
+
 </script>
+
+<div>
+  <h4>Comentarios</h4>
+  <%= rating_for marker2, "rate"%>
+</div>
+
+
 

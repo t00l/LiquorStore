@@ -40,7 +40,7 @@ class StoresController < InheritedResources::Base
       marker.lat store.latitude
       marker.lng store.longitude
 
-      marker.json({:store_name => store.name, :store_schedule => schedule, :store_image => store.image.to_s, :store_address => store.address})
+      marker.json({:store_id => store.id ,:store_name => store.name, :store_schedule => schedule, :store_image => store.image.to_s, :store_address => store.address})
 
       # marker.infowindow "<a href='#{store_path(store)}'>
       #                     <div class='box' style='width:120px;'>
