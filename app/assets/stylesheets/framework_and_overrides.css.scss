@@ -367,7 +367,6 @@ h4 {
 }
 
 .secondary.small.button {
-  background-color: transparent;
   color: #fff;
   border: 2px #fff solid;
   border-radius: 5px;
@@ -402,7 +401,6 @@ h4 {
 
 .button:hover {
   color: rgba(255,255,255,0.7);
-  background-color: transparent;
 }
 
 footer p,footer a {
@@ -415,6 +413,7 @@ footer p,footer a {
   background-size: cover;
   box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.2);
 }
+
 
 .hero-content {
   padding-top: 40px;
