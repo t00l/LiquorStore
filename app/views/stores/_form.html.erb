@@ -18,7 +18,7 @@
     <%= f.text_field :address, placeholder: "Dirección" %>
   </div>
 
-<p class="text-center">Hora de apertura</p>
+<p class="text-center"><strong>Hora de apertura</strong></p>
 <div class="row">
   <div class="large-6 columns field">
       <%= f.select :openhour, '00'..'23'%>
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<p class="text-center">Hora de cierre</p>
+<p class="text-center"><strong>Hora de cierre</strong></p>
 <div class="row">
   <div class="large-6 columns field">
     <%= f.select :closehour, '00'..'23', placeholder: "Hora de cierre" %>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Agregar local', class: "button round" %>
+    <%= f.submit 'Listo', class: "button round" %>
 
   </div>
 <% end %>

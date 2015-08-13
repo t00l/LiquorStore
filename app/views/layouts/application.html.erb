@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Hackaton Boti Seek" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Party Cat: Encuentra tu botillería más cercana" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hackaton Boti Seek" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%# Modernizr is required for Zurb Foundation %>
     <%= javascript_include_tag 'vendor/modernizr' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'cat.png' %>
   </head>
 
 <body>
@@ -22,8 +23,11 @@
 
 <%= yield %>
 
-<!-- Latest compiled and minified JavaScript -->
-
-
 </body>
+
+<footer>
+    <p class="text-center">Party Cat © 2015, hacemos lo que podemos</p>
+    <a href="layouts/contacto" class="contacto">Contáctanos</a>
+</footer>
+
 </html>

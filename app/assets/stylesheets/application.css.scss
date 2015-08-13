@@ -15,3 +15,23 @@
  *= require selectize
  *= require selectize.default
  */
+
+body {
+  background-color: #D6D4D4;
+}
+
+a:hover.text-center {
+	background-color:#D6D4D4;
+	color:black;
+	font-size:110%;
+}
+
+footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    display: block;
+    margin-top:40px;
+}

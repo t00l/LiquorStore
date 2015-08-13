@@ -18,6 +18,7 @@ resources :products
 
   get 'owners/stores', to: 'owners#stores'
 
+
   devise_for :owners, controllers: { registrations: "owners/registrations" }
 
   resources :stores do

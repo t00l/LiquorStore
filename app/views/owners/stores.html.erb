@@ -1,4 +1,18 @@
-<% @stores.each do |store| %>
-	<p><%= store.name %></p>
-	<p><%= store.address %></p>
-<% end %>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+
+<h2>Administra tus locales</h2>
+
+<div class="row">
+	<div class="large-12 columns">
+			<% @stores.each do |store| %>
+				<h3><%= store.name %></h3>
+				<ul class="button-group round toggle" data-toggle="buttons-radio">
+				 <li><label class="button local" for="r1"><%= link_to 'Ir a la botillería', store %></label><li>
+				 <li><label class="button local" for="r2"><%= link_to 'Edita tu botillería', edit_store_path(store) %></label></li>
+				  <li><label class="button local" for="r3"><%= link_to 'Eliminar botillería', store, method: :delete, data: { confirm: '¿Seguro que quieres eliminar la tienda? ¿Seguro seguro? :(' } %></label></li>
+		</ul>
+	</div>
+	<% end %>
+</div>
+
+

@@ -12,18 +12,16 @@
     </div>
   <% end %>
   
-   	<div class="field" style="padding-left:10px;">
-    		<%= f.label :name, 'Oferta'  %>
-    		<%= f.text_field :name, class: "form-control", placeholder: "Nombre oferta" %>
+   	<div class="field">
+    		<%= f.text_field :name, class: "form-control", placeholder: "Nombre de tu promo" %>
     </div>
 
-    <div class="field" style="padding-left:10px;">
-        <%= f.label :price, 'Precio:'  %>
+    <div class="field">
         <%= f.text_field :price, class: "form-control", placeholder: "Precio" %>
     </div>
 
-	<div class="action" style="padding-left:10px;padding-bottom:10px;">
-		  	<%= f.submit 'Enviar', class: "btn btn-primary" %>
+	<div class="action">
+		  	<%= f.submit 'Enviar', class: "button round" %>
 	</div>			
 
 <%end%>
