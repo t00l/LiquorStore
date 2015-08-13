@@ -15,8 +15,8 @@ development:
   database: botillerias
   pool: 5
 
-  username: flofi
-  password: pau30203221
+  username: javier
+  password: 123456
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
