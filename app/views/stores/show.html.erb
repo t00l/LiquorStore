@@ -25,7 +25,6 @@
   </script>
 
   <script>
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
   </script> -->
 
   <h4 class="text-center">Promociones</h4>
@@ -43,16 +42,20 @@
   <% end %>
 </div>
 
-<%= form_tag('create_store_product', method: :post) do %>
-    
-  <div>
-    <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Seleccionar un copete' , id:"select-drink", multiple: true %>
-    <%= hidden_field_tag :store, @store.id %>
-  </div>
 
-  <div class="actions">
-    <%= submit_tag "Guardar" %>
-  </div>
+<% if owner_signed_in?%>
+  <%= form_tag('create_store_product', method: :post) do %>
+      
+    <div>
+      <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Seleccionar un copete' , id:"select-drink", multiple: true %>
+      <%= hidden_field_tag :store, @store.id %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Guardar" %>
+    </div>
+
+  <% end %>
 
 <% end %>
 
@@ -63,13 +66,6 @@ Nuestra nota:
 <br>
 <br>
 
-<div class="form-comments">
-  <h4>Comentarios</h4>
-  <% if user_signed_in? || owner_signed_in?%>
-    <%= render "comments/form" %>
-  <%end%>
-</div>`
-
 
 <div class="form-stars">
   <% if user_signed_in?  %>
@@ -77,7 +73,6 @@ Nuestra nota:
     <% end %>
 </div>
 
-<% elsif user_signed_in?%>
   <div class="form-comments">
     <h4>Comentarios</h4>
   <% if user_signed_in? || owner_signed_in?%>
@@ -96,7 +91,7 @@ Nuestra nota:
     <p>No hay comentarios!</p>
   <%end%>
 </div>
-<%end%>
+
 
 
 <script>
