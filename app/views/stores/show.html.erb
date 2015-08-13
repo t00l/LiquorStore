@@ -85,9 +85,19 @@
   <% end %>
 </div>
 
+<%= form_tag('create_store_product', method: :post) do %>
+    
   <div>
-    <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Seleccionar un copete' , id:"select-drink" %>
+    <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Seleccionar un copete' , id:"select-drink", multiple: true %>
+    <%= hidden_field_tag :store, @store.id %>
   </div>
+
+  <div class="actions">
+    <%= submit_tag "Guardar" %>
+  </div>
+
+<% end %>
+
 
 Nuestra nota:
 <%= rating_for @store, "rate"%>

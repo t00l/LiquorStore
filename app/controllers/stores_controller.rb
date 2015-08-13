@@ -145,6 +145,11 @@ class StoresController < InheritedResources::Base
     end
   end
 
+  def create_store_product
+    binding.pry
+    params = params
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store
@@ -154,7 +159,7 @@ class StoresController < InheritedResources::Base
     # Never trust parameters from the scary internet, only allow the white list through.
 
     def store_params
-      params.require(:store).permit(:name, :address, :openhour, :openmin, :closehour, :closemin, :latitude, :longitude, :user_id, :image)
+      params.require(:store).permit(:name, :address, :openhour, :openmin, :closehour, :closemin, :latitude, :longitude, :user_id, :image, products_attributes:[:id, :name,:image, :status])
     end
 
 end

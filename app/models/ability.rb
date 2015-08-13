@@ -34,6 +34,8 @@ class OwnerAbility
         can :read, :all
     end
 
+    can :create_store_product, Store
+
   end
 
 end

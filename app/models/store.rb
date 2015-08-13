@@ -6,8 +6,11 @@ class Store < ActiveRecord::Base
 
   has_many :offers
   has_many :comments
+  has_many :products , through: :store_products
   belongs_to :user
   belongs_to :owner
+
+  accepts_nested_attributes_for :products
   
   pg_search_scope :search_by_name, :against => [:name], :associated_against => {
     :offers => [:name]}, :using => {:tsearch => {:prefix => true}}

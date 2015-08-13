@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  
+
+
+
+
 resources :products
 
   post '/rate' => 'rater#create', :as => 'rate'
@@ -20,7 +23,10 @@ resources :products
   resources :stores do
     resources :comments
     resources :offers
+    post 'store_products/new' => 'store_products#new', :as => 'store_products'
   end
+
+  post 'stores/create_store_product' => 'stores#create_store_product', :as => 'create_store_product'
   
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
