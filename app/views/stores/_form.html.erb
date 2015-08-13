@@ -11,27 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field" style="padding-left:10px;">
-    <%= f.label :name, 'Nombre' %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field" style="padding-left:10px;">
-    <%= f.label :address, 'Dirección' %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field" style="padding-left:10px;"> 
-    <%= f.label :schedule, 'Horario de atención' %><br>
-    <%= f.text_field :schedule%>
-  </div>
-
   <div class="field">
-    <%= f.label :image, 'Image' %><br>
-    <%= f.file_field :image %>
+    <%= f.text_field :name, placeholder: "Nombre" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :address, placeholder: "Dirección" %>
   </div>
 
+<p class="text-center">Hora de apertura</p>
+<div class="row">
+  <div class="large-6 columns field">
+      <%= f.select :openhour, '00'..'23'%>
+  </div>
+  <div class="large-6 columns field">
+      <%= f.select :openmin, '00'..'59' %>
+  </div>
+</div>
 
-  <div class="actions" style="padding-left:10px;">
-    <%= f.submit 'Agregar local' %>
+<p class="text-center">Hora de cierre</p>
+<div class="row">
+  <div class="large-6 columns field">
+    <%= f.select :closehour, '00'..'23', placeholder: "Hora de cierre" %>
+  </div>
+  <div class="large-6 columns field">
+    <%= f.select :closemin, '00'..'59' %>
+  </div>
+</div>
+
+  <!-- Agregar aquí checkbox de 24 horas -->
+  <div class="field">
+    <%= f.file_field :image, class: "default button" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Agregar local', class: "button round" %>
 
   </div>
 <% end %>

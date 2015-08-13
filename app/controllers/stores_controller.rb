@@ -6,7 +6,7 @@ class StoresController < InheritedResources::Base
   # GET /Stores
   # GET /Stores.json
   def index
-
+    @store = Store.new
     if params.key?(:query) && !params[:query].empty?
       @stores = Store.search_by_name(params[:query])
     else
@@ -15,25 +15,50 @@ class StoresController < InheritedResources::Base
 
     #@stores = Store.all
     @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+
+      time = Time.now
+      t = time.strftime("%R").to_s
+
+      opentime = store.openhour+":"+store.openmin
+      closetime = store.closehour+":"+store.closemin
+      schedule = opentime+"-"+closetime
+
+      if opentime < closetime
+        if t >= opentime && t <= closetime
+          @url_icon = ActionController::Base.helpers.asset_path("openedstore.png")
+        else
+          @url_icon = ActionController::Base.helpers.asset_path("closedstore.png")
+        end
+      else  
+        if t > closetime && t < opentime
+          @url_icon = ActionController::Base.helpers.asset_path("closedstore.png")
+        else
+          @url_icon = ActionController::Base.helpers.asset_path("openedstore.png")
+        end
+      end
+
+      store_name_norm = ActiveSupport::Inflector.transliterate(store.name)
+
       marker.lat store.latitude
       marker.lng store.longitude
-      marker.infowindow "<a href='#{store_path(store)}'>
-                          <div class='box' style='width:120px;'>
-                            <h2>
-                              <strong>
-                              "+store.name+" 
-                              </strong>
-                            </h2>
-                            <h3>
-                              "+"Atención: "+store.schedule+"
-                            </h3>
-                            <img src="+store.image.to_s+">
-                          </div>
-                        </a>"
+ 
+      loc = store.latitude.to_s+", "+store.longitude.to_s
 
-      marker.picture({"url" => "http://i57.tinypic.com/68dg0j.png",
-                      "width" => 64 ,
-                      "height" => 64})
+      location = Geocoder.search(loc)
+
+      marker.json({:store_id => store.id ,
+                  :store_name => store.name,
+                  :store_name_norm => store_name_norm,
+                  :store_schedule => schedule, 
+                  :store_image => store.image.to_s, 
+                  :store_address => store.address, 
+                  :store_rating => store.rate_average ? store.rate_average.avg : 0,
+                  :store_location => location
+                  })             
+
+      marker.picture({"url" => @url_icon,
+                      "width" => 36 ,
+                      "height" => 36});
     end
   end
 
@@ -129,8 +154,7 @@ class StoresController < InheritedResources::Base
     # Never trust parameters from the scary internet, only allow the white list through.
 
     def store_params
-      params.require(:store).permit(:name, :address, :schedule, :latitude, :longitude, :owner_id, :image)
+      params.require(:store).permit(:name, :address, :openhour, :openmin, :closehour, :closemin, :latitude, :longitude, :user_id, :image)
     end
-
 
 end

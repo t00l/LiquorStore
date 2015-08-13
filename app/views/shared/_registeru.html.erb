@@ -1,33 +1,29 @@
-<h2>Registro</h2>
+<h2>Regístrate</h2>
 
 <%= form_for(:user, :url => user_registration_path) do |f| %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, placeholder: "Nombre" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email%>
+    <%= f.email_field :email, placeholder: "Email"%>
   </div>
 
 <!-- -->
 
   <div class="field">
-    <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "Contraseña" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirma tu contraseña" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Listo", class: "button radius" %>
   </div>
 <% end %>

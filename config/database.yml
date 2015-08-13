@@ -14,7 +14,7 @@ development:
   encoding: unicode
   database: botillerias
   pool: 5
-  username: tool
+  username: javier
   password: 123456
 
 # Warning: The database defined as "test" will be erased and

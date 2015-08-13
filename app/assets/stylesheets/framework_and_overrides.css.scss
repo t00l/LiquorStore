@@ -92,7 +92,7 @@ section {
 }
 
 .map_container{
-    position: relative;
+      position: relative;
       padding-top: 20px;
       padding-bottom: 600px;
       width: 50%;
@@ -113,16 +113,28 @@ section {
       margin-right: auto;
     }
 
-.reveal-modal {
+.map_container .geolocation{
+
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+.loginmodal {
   background-color: black;
   color:white;
   border: none;
-  top:45px;
+  top: 45px;
 }
 
-.reveal-modal > h2 {
+.loginmodal > h2 {
   color:white;
-}
+} 
 
 .field {
   width:50%;
@@ -137,6 +149,7 @@ section {
 
 .button.radius {
   margin:auto;
+  display:block;
 }
 
 a.secondary.button {
@@ -147,7 +160,53 @@ a.secondary.button {
 .button.round {
   margin:auto;
   display:block;
-  background-color: red;
+  background-color: lightblue;
+}
+
+h2 {
+  color:white;
+  text-align: center;
+}
+
+a.text-center {
+  color:white;
+  margin:auto;
+  display:block;
+}
+
+div.text-center > a {
+  color:white;
+}
+
+#DemoModal {
+bottom:0px;
+right:0px;
+top:initial;
+outline: none;
+display: none;
+position: fixed;
+z-index: 100;
+width: 50%;
+height: 40%;
+}
+
+select#store_openmin{
+  width:50%;
+}
+
+select#store_openhour{
+  width:50%;
+  float: right;
+
+}
+
+select#store_closehour{
+  width:50%;
+  float: right;
+}
+
+select#store_closemin{
+  width:50%;
 }
 
 @media only screen and (max-width: 40em){
@@ -156,6 +215,7 @@ a.secondary.button {
       padding-top: 20px;
       padding-bottom: 600px;
       width: 100%;
+      height: 100%;
       min-width: 100%;
       margin-left: auto;
       margin-right: auto;
@@ -164,7 +224,7 @@ a.secondary.button {
 
 .map_container .geolocation{
 
-    position: absolute;
+      position: absolute;
       left: 0px;
       top: 0px;
       z-index: 2;
@@ -173,4 +233,25 @@ a.secondary.button {
       margin-left: auto;
       margin-right: auto;
     }
+
+#DemoModal {
+bottom:0px !important;
+right:0px;
+outline: none;
+display: none;
+position: fixed;
+z-index: 100;
+width: 100%;
+height:45% ;
+top:initial;
+}
+
+.loginmodal {
+  min-height: 0px;
+  height:100%;
+}
+
+.reveal-modal {
+  min-height: 0px;
+}
 }

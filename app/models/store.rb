@@ -16,6 +16,9 @@ class Store < ActiveRecord::Base
 
   after_validation :geocode, :if => :address_changed?
 
+  after_validation :reverse_geocode
+
+
   mount_uploader :image, ImageUploader
 
   friendly_id :name, use: [:slugged, :finders]

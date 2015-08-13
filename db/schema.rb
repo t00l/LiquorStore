@@ -159,7 +159,6 @@ ActiveRecord::Schema.define(version: 20150809041545) do
   create_table "stores", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "schedule"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
@@ -167,6 +166,10 @@ ActiveRecord::Schema.define(version: 20150809041545) do
     t.datetime "updated_at", null: false
     t.string   "image"
     t.string   "slug"
+    t.string   "openhour"
+    t.string   "openmin"
+    t.string   "closehour"
+    t.string   "closemin"
     t.integer  "owner_id"
   end
 
