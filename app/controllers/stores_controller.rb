@@ -53,12 +53,15 @@ class StoresController < InheritedResources::Base
                   :store_image => store.image.to_s, 
                   :store_address => store.address, 
                   :store_rating => store.rate_average ? store.rate_average.avg : 0,
-                  :store_location => location
+                  :store_location => location,
+                  :store_lat => store.latitude,
+                  :store_lng => store.longitude
                   })             
 
       marker.picture({"url" => @url_icon,
                       "width" => 36 ,
                       "height" => 36});
+      
     end
   end
 
