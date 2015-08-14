@@ -27,7 +27,6 @@
   <div id="DemoModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
       <div class="clasenombre"></div>
       <div class="clasehora"></div>
-      <div class="claseimagen"></div>
       <div class="clasedireccion"></div>
       <div class="clasestars"></div>
       <button class="button round" id="target" >Trazar Ruta</button>
@@ -76,8 +75,6 @@ function initialize(){
             rating = elem.store_rating,
             reverse_address = elem.store_location[0].data.formatted_address
             
-        // console.log(elem.store_location[0].data.formatted_address);
-
         $(".clasenombre").html("<h1><a href='stores/"+name_norm.replace(' ','-').toLowerCase()+"'>"+name+" </a></h1>")
         $(".clasehora").html("<h3>"+schedule+"</h3>")
         $(".claseimagen").html("<img src="+image+">")

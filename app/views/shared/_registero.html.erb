@@ -10,6 +10,15 @@
     <%= f.email_field :email, placeholder: "Email"%>
   </div>
 
+    <div class="field">
+    <%= f.rut :rut, placeholder: "Rut"%>
+  </div>
+
+    <div class="field">
+    <%= f.phone :phone, placeholder: "Fono"%>
+  </div>
+
+
   <div class="field">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> caracteres mínimo)</em>

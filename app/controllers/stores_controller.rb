@@ -46,7 +46,7 @@ class StoresController < InheritedResources::Base
 
       location = Geocoder.search(loc)
 
-      marker.json({:store_id => store.id ,
+      marker.json({:store_id => store.id,
                   :store_name => store.name,
                   :store_name_norm => store_name_norm,
                   :store_schedule => schedule, 

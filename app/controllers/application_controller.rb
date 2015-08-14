@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       if params[:controller] == "user"
         devise_parameter_sanitizer.for(:sign_up) << :name
         devise_parameter_sanitizer.for(:account_update) << :name
-      else
+      else 
         # devise_parameter_sanitizer.for(:sign_up) do |u|
         #   u.permit(:name, :rut, :phone, :role, :email, :password,
         #     :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar,
@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
         #     :password_confirmation, :current_password, :avatar, :avatar_cache, :remove_avatar,
         #     :remote_avatar_url)
         # end
-        devise_parameter_sanitizer.for(:sign_up) << :name << :rut << :phone << :role
+        devise_parameter_sanitizer.for(:sign_up) << :name  << :email << :rut << :phone << :role
         devise_parameter_sanitizer.for(:account_update) << :name << :rut << :phone << :role
       end
 

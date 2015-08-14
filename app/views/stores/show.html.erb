@@ -4,11 +4,11 @@
 
   <div class="container"><%= image_tag @store.image_url, class: "storeimage" %></div>
 
-  <h3 class="nombrelocal"><%= @store.name %></h3>
+  <h3 class="nombrelocal text-center"><%= @store.name %></h3>
 
-  <h5 class="nombrelocal">Dirección: <%= @store.address %></h5>
+  <h5 class="nombrelocal text-center">Dirección: <%= @store.address %></h5>
 
-  <h6 class="nombrelocal">Horario de atención: <%= @store.openhour %>:<%= @store.openmin %> - <%= @store.closehour %>:<%= @store.closemin %></h6>
+  <h6 class="nombrelocal text-center">Horario de atención: <%= @store.openhour %>:<%= @store.openmin %> - <%= @store.closehour %>:<%= @store.closemin %></h6>
 <!-- 
   <script>
 
@@ -46,13 +46,13 @@
 <% if owner_signed_in?%>
   <%= form_tag('create_store_product', method: :post) do %>
       
-    <div>
-      <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Seleccionar un copete' , id:"select-drink", multiple: true %>
+    <div class="field">
+      <%= select_tag :product_id, options_from_collection_for_select(Product.all, :id, :name), prompt: 'Selecciona un copete' , id:"select-drink", multiple: true %>
       <%= hidden_field_tag :store, @store.id %>
     </div>
 
     <div class="actions">
-      <%= submit_tag "Guardar" %>
+      <%= submit_tag "Guardar", class: "button round" %>
     </div>
 
   <% end %>
@@ -60,7 +60,7 @@
 <% end %>
 
 
-Nuestra nota:
+<p class="text-center">Nuestra nota:</p>
 <%= rating_for @store, "rate"%>
 
 <br>
